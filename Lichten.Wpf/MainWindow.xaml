@@ -1,0 +1,15 @@
+﻿<Window x:Class="Lichten.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lichten.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="303.284" Width="467.161">
+    <Grid>
+        <Button x:Name="btnLicht" Content="Verander licht" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="115" Height="35" Click="btnLicht_Click"/>
+        <Label x:Name="lblFeedback" Content="" HorizontalAlignment="Left" Margin="143,11,0,0" VerticalAlignment="Top" Height="62" Width="288"/>
+        <Label Content="Bij het opstarten wordt een waarde toegekend aan de variabele getalLicht.&#xD;&#xA;&#xD;&#xA;Op basis van de enum Kleur wordt bepaald welke kleur dit is. &#xD;&#xA;In lblFeedback verschijnt: De kleur van het licht is ....&#xD;&#xA;&#xD;&#xA;Daaronder verschijnt wat de bestuurder moet doen: stoppen, proberen te stop-&#xD;&#xA;pen of doorrijden.&#xD;&#xA;&#xD;&#xA;Door een klik op de knop wordt getalLicht aangepast naar de volgende waarde&#xD;&#xA;(groen wordt oranje, oranje wordt rood, rood wordt groen).&#xD;&#xA;Er wordt telkens feedback gegeven. &#xD;&#xA;&#xD;&#xA;Geef elLicht de passende achtergrondkleur." HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="220" Width="434"/>
+        <Ellipse x:Name="elLicht" Fill="#FFF5F4F4" HorizontalAlignment="Left" Height="35" Margin="409,11,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
+    </Grid>
+</Window>

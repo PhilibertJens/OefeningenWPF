@@ -1,0 +1,16 @@
+﻿<Window x:Class="SelectieOefeningen.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SelectieOefeningen.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="370" Width="614">
+    <Grid>
+        <TextBox x:Name="txtGetal" HorizontalAlignment="Left" Height="23" Margin="28,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Right" TextChanged="txtGetal_TextChanged"/>
+        <Button x:Name="btnGok" Content="Gok" HorizontalAlignment="Left" Margin="28,79,0,0" VerticalAlignment="Top" Width="120" Height="28" Click="btnGok_Click"/>
+        <Label x:Name="lblFeedback" Content="Pogingen" HorizontalAlignment="Left" Margin="28,115,0,-2" VerticalAlignment="Top" Height="206" Width="120"/>
+        <Label Content="Tik een getal in en klik op gok" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bij het opstarten wordt een willekeurig getal gekozen.&#xD;&#xA;&#xD;&#xA;De cursor wordt in txtGetal geplaatst.&#xA;&#xA;Laat de gebruiker een getal intikken.&#xA;Vermijd dat er iets anders dan gehele getallen ingetikt kan worden.&#xD;&#xA;&#xA;Bij een klik op Gok:&#xD;&#xA;-  Wordt er bij de tekst in lblFeedback een lijn toegevoegd met het &#xD;&#xA;    gegokte getal.&#xD;&#xA;- Indien de gok juist is wordt er bij de tekst in lblFeedback een volgende&#xD;&#xA;   lijn toegevoegd: &#xD;&#xA;  U heeft het geraden in x pogingen&#xD;&#xA;- Indien er verkeerd gegokt werd wordt de cursor in txtGetal geplaatst&#xD;&#xA;  en wordt de volledige inhoud van deze textbox geselecteerd.&#xA;" HorizontalAlignment="Left" Margin="196,10,0,0" VerticalAlignment="Top" Height="319" Width="400"/>
+    </Grid>
+</Window>
