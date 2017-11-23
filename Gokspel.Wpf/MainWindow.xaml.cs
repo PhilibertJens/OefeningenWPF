@@ -26,7 +26,7 @@ namespace SelectieOefeningen.Wpf
         {
             InitializeComponent();
             Random rnd = new Random();
-            teGokkenGetal = rnd.Next(1, 5);
+            teGokkenGetal = rnd.Next(1, 6);
             Console.WriteLine("teGokkenGetal = " + teGokkenGetal);
             txtGetal.Focus();
         }
