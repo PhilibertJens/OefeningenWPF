@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10-Gokspel-Uitbreiding.Wpf", "02-Gokspel-Uitbreiding.Wpf\10-Gokspel-Uitbreiding.Wpf.csproj", "{33E331F2-D07D-4BE2-91F1-F6D4C841E73E}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-HTML.Wpf", "HTML.Wpf\04-HTML.Wpf.csproj", "{ABD228F8-18A2-4740-94A7-6F38A4D2DFEB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Sliders.Wpf", "Sliders.Wpf\03-Sliders.Wpf.csproj", "{F9E91B28-35B6-47C8-B52F-55ECB572A143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-HTMLGetallen", "04-HTMLGetallen\04-HTMLGetallen.csproj", "{3A883FC7-4F55-473B-8DE4-F352E6D1656B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F9E91B28-35B6-47C8-B52F-55ECB572A143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9E91B28-35B6-47C8-B52F-55ECB572A143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9E91B28-35B6-47C8-B52F-55ECB572A143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A883FC7-4F55-473B-8DE4-F352E6D1656B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A883FC7-4F55-473B-8DE4-F352E6D1656B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A883FC7-4F55-473B-8DE4-F352E6D1656B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A883FC7-4F55-473B-8DE4-F352E6D1656B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Slider x:Name="sldGetal1" HorizontalAlignment="Left" Margin="98,37,0,0" VerticalAlignment="Top" Width="236" AutoToolTipPlacement="TopLeft" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
-        <Slider x:Name="sldGetal2" HorizontalAlignment="Left" Margin="98,76,0,0" VerticalAlignment="Top" Width="236" AutoToolTipPlacement="TopLeft" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
         <Label Content="Eerste" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="58"/>
         <Label Content="Tweede" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="58"/>
         <Button x:Name="btnTestSliders" Content="Test sliders" HorizontalAlignment="Left" Margin="98,120,0,0" VerticalAlignment="Top" Width="149" Height="31" Click="btnTestSliders_Click"/>
         <Label x:Name="lblBoodschap" Content="Plaats slider en klik op de knop" HorizontalAlignment="Left" Margin="98,170,0,0" VerticalAlignment="Top" Height="55" Width="236"/>
+        <Slider x:Name="sldGetal1" HorizontalAlignment="Left" Margin="98,44,0,0" VerticalAlignment="Top" Width="190" ValueChanged="sldGetal1_ValueChanged"/>
+        <Slider x:Name="sldGetal2" HorizontalAlignment="Left" Margin="98,76,0,0" VerticalAlignment="Top" Width="190" ValueChanged="sldGetal2_ValueChanged"/>
 
     </Grid>
 </Window>
