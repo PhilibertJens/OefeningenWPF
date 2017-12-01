@@ -27,17 +27,23 @@ namespace WpfSelectie
             momenteel = DateTime.Now;
             lblTijd.Content = Weekdag() + " " + momenteel.ToString("d MMMM yyyy hh:mm");
             VulCombo();
+            cmbLeeftijd.SelectedIndex = 0;
         }
 
         void VulCombo()
         {
+            for (int i = 0; i <= 100; i++)
+            {
+                cmbLeeftijd.Items.Add(i);
+            }
             //Vul cmbLeeftijd met de getallen van 0 tot en met 100
         }
 
         bool isAvond(int uur)
         {
             //Als avond nemen we de uren van 18 t.e.m. 23 uur
-            bool avond = false;  
+            bool avond = false;
+            if (18 <= uur && uur < 23) return true;
             //Tik hier je code
             return avond;
         }
@@ -104,6 +110,11 @@ namespace WpfSelectie
 
         private void btnLeeftijd_Click(object sender, RoutedEventArgs e)
         {
+            string feedback = "";
+            bool checkLeeftijd = int.TryParse(cmbLeeftijd.SelectedValue.ToString(), out int leeftijd);
+            if (leeftijd > 17) feedback = $"Op de leeftijd van {leeftijd} jaar ben je meerderjarig";
+            else feedback = $"Op de leeftijd van {leeftijd} jaar ben je nog niet meerderjarig";
+            MessageBox.Show(feedback);
             //Lees de waarde uit in cmbLeeftijd
             //Is die waarde groter dan 17, toon de de tekst "Op de leeftijd van x jaar ben je meerderjarig"
             //Is de waarde kleiner dan 18, toon de de tekst "Op de leeftijd van x jaar ben je nog niet meerderjarig"
@@ -114,6 +125,12 @@ namespace WpfSelectie
             int uur = momenteel.Hour;
             int minuten = momenteel.Minute;
             bool isHetAvond = isAvond(uur);
+            string feedback;
+            if (isHetAvond) feedback = $"Om {uur} uur is het avond";
+            //if (isHetAvond) feedback =  "Om " + uur + " uur is het avond"; --> Dit is de andere manier voor string concatenatie.
+            else if (uur < 18) feedback = $"Om {uur} is het nog geen avond";
+            else feedback = $"Om {uur} is het al nacht";
+            MessageBox.Show(feedback);
 
             //Als het avond is, toon dan een boodschap: "Om x is het avond"
             //Is het voor 18 uur, toon dan een boodschap: "Om x is het nog geen avond"

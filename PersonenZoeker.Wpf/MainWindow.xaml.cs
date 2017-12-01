@@ -190,7 +190,14 @@ namespace PersonenZoeker.Wpf
         private void btnOpenBestand_Click(object sender, RoutedEventArgs e)
         {
             bestandsNaam = KiesBestand("Text documents (.txt)|*.txt");
-            personen = ZetBestandOm(bestandsNaam, '|');
+            if (bestandsNaam == "")
+            {
+                MessageBox.Show("Kies a.u.b. een bestand","Operatie mislukt");
+            }
+            else
+            {
+                personen = ZetBestandOm(bestandsNaam, '|');
+            }            
         }
 
         private void btnToonAlles_Click(object sender, RoutedEventArgs e)
@@ -200,32 +207,166 @@ namespace PersonenZoeker.Wpf
 
         void ToonAlleInfo()
         {
-
+            //Drie manieren om de info binnen de foreach te tonen: Join, persoon[0] of foreach.
+            lstResultaat.Items.Clear();
+            foreach (string[] persoon in personen)
+            {
+                string infoOverpersoon = "";
+                //infoOverpersoon = persoon[0] + " - " + persoon[1] + " - " + persoon[2] + " - " + persoon[3] + " - " + persoon[4] + " - " + persoon[5];
+                infoOverpersoon = String.Join(" - ",persoon); //Beter dan foreach. Hier komt er ook geen streepje na het laatste element.
+                                
+                //foreach (string informatie in persoon)
+                //{
+                //    infoOverpersoon += informatie + " - ";
+                    
+                //}
+                lstResultaat.Items.Add(infoOverpersoon);
+            }
         }
 
         private void cmbLand_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            lstResultaat.Items.Clear();
+            string land = cmbLand.SelectedValue.ToString();
 
+            string infoOverPersoon = "";
+            string landPersoon = "";
+            foreach (string[] persoon in personen)
+            {
+                landPersoon = persoon[3];
+                if (land == landPersoon)
+                {
+                    infoOverPersoon = $"{persoon[0]} {persoon[1]} uit {persoon[3]}";
+                    lstResultaat.Items.Add(infoOverPersoon);
+                }
+            }
         }
 
         private void cmbGeslacht_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //lstResultaat.Items.Clear();
+            //string land = cmbLand.SelectedValue.ToString();
+            //string geslacht = cmbGeslacht.SelectedValue.ToString();
 
+
+            //foreach (string[] persoon in personen)
+            //{
+            //    string infoOverPersoon = "";
+            //    string landPersoon = "";
+            //    string geslachtPersoon = "";
+            //    landPersoon = persoon[3];
+            //    if (land == landPersoon && geslacht == geslachtPersoon)
+            //    {
+            //        infoOverPersoon = $"{persoon[1]} {persoon[0]} uit {persoon[3]}";
+            //        lstResultaat.Items.Add(infoOverPersoon);
+            //    }
+            //}
+
+
+            lstResultaat.Items.Clear();
+            string geslacht = cmbGeslacht.SelectedValue.ToString();
+            string infoOverPersoon = "";
+            string landPersoon = "";
+            string geslachtPersoon = "";
+            if (cmbLand.SelectedIndex > -1)
+            {
+                string land = cmbLand.SelectedValue.ToString();
+                foreach (string[] persoon in personen)
+                {
+                    landPersoon = persoon[3];
+                    geslachtPersoon = persoon[4];
+                    if (land == landPersoon && geslacht == geslachtPersoon)
+                    {
+                        infoOverPersoon = String.Join(" - ", persoon);
+                        lstResultaat.Items.Add(infoOverPersoon);
+                    }
+                }
+            }
+            else
+            {
+                foreach (string[] persoon in personen)
+                {
+                    geslachtPersoon = persoon[4];
+                    if (geslacht == geslachtPersoon)
+                    {
+                        infoOverPersoon = String.Join(" - ", persoon);
+                        lstResultaat.Items.Add(infoOverPersoon);
+                    }
+                }
+            }
+        }
+
+        string ToonDecennium(string leeftijd)
+        {
+            string decennium = "";
+            switch (leeftijd)
+            {
+                case "1":
+                    decennium = "tiener";
+                    break;
+                case "2":
+                    decennium = "twintiger";
+                    break;
+                case "3":
+                    decennium = "dertiger";
+                    break;
+                case "4":
+                    decennium = "veertiger";
+                    break;
+                default:
+                    decennium = "50 +";
+                    break;
+            }
+            return decennium;
         }
 
         private void btnDecennium_Click(object sender, RoutedEventArgs e)
         {
+            lstResultaat.Items.Clear();
+            foreach (string[] persoon in personen)
+            {
+                string infoOverPersoon = "";
+                string decennium, leeftijd;
+                leeftijd = persoon[5];
+                char eersteLetterLeeftijd = leeftijd[0]; //eerste char uit de leeftijd
+                string eersteLetterVanDeLeeftijd = eersteLetterLeeftijd.ToString();
+                decennium = ToonDecennium(eersteLetterVanDeLeeftijd);
+                infoOverPersoon = $"{persoon[1]} {persoon[0]} uit {persoon[3]} is een {decennium} ";
+                lstResultaat.Items.Add(infoOverPersoon);
 
+                //string leeftijdNaam = ToonDecennium(eersteLetterLeeftijd);
+                //infoOverPersoon = $"{persoon[1]} {persoon[0]} uit {persoon[3]} is een {leeftijdNaam} ";
+                //lstResultaat.Items.Add(infoOverPersoon);
+            }
         }
 
         private void btnZoekNaam_Click(object sender, RoutedEventArgs e)
         {
+            string zoekterm = txtZoekNaam.Text.ToUpper();
+            ToonPersonen(zoekterm, true);
+        }
 
+        void ToonPersonen(string zoekterm, bool eerste)
+        {
+            lstResultaat.Items.Clear();
+            foreach (string[] persoon in personen)
+            {
+                string naam = persoon[0];
+                if (naam.ToUpper().Contains(zoekterm))
+                {
+                    string infoOverPersoon = "";
+                    if (persoon[4] == "M") infoOverPersoon = $"{persoon[1]} {persoon[0]} komt uit {persoon[3]} en woont in {persoon[2]}. Hij is {persoon[5]} jaar.";
+                    else infoOverPersoon = $"{persoon[1]} {persoon[0]} komt uit {persoon[3]} en woont in {persoon[2]}. Ze is {persoon[5]} jaar.";
+                    lstResultaat.Items.Add(infoOverPersoon);
+                    if (eerste) break;
+                }
+            }
         }
 
         private void txtFilterNaam_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            string filter = txtFilterNaam.Text.ToUpper();
+            ToonPersonen(filter, false);
         }
     }
 }
